@@ -3,6 +3,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import {
@@ -14,6 +15,7 @@ import {
   FaCode,
   FaInfoCircle,
   FaRocket,
+  FaDownload,
 } from 'react-icons/fa';
 
 import bluejay from './images/bluejay_logo.png';
@@ -93,12 +95,19 @@ function AlertSection() {
   );
 }
 
-function FirmwareCard({ title, icon, children, link }) {
+function FirmwareCard({
+  title,
+  icon,
+  children,
+  link,
+}) {
   return (
     <div className="feature-card">
       <div className="card-header">
         {icon}
-        <h3>{title}</h3>
+        <h3>
+          {title}
+        </h3>
       </div>
       <div className="card-body">
         {children}
@@ -110,12 +119,25 @@ function FirmwareCard({ title, icon, children, link }) {
           rel="noreferrer"
           target="_blank"
         >
-          Learn More <FaGithub />
+          Learn More
+          {' '}
+          <FaGithub />
         </a>
       )}
     </div>
   );
 }
+
+FirmwareCard.propTypes = {
+  children: PropTypes.node.isRequired,
+  icon: PropTypes.node.isRequired,
+  link: PropTypes.string,
+  title: PropTypes.string.isRequired,
+};
+
+FirmwareCard.defaultProps = {
+  link: null,
+};
 
 function FirmwareSection() {
   const { t } = useTranslation('common');

@@ -67,7 +67,9 @@
     ],
     "rules": {
       "react/jsx-no-leaked-render": "off",
-      "react/no-unknown-property": "off"
+      "react/no-unknown-property": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-max-props-per-line": "off"
     }
   },
   "browserslist": {
