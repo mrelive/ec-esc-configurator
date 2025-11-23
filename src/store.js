@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import configsReducer from './Containers/App/configsSlice';
-import cookiereducer from './Components/CookieConsent/cookieSlice';
 import escsReducer from './Containers/App/escsSlice';
 import languageReducer from './Components/LanguageSelection/languageSlice';
 import logReducer from './Components/Log/logSlice';
@@ -15,7 +14,6 @@ import statusReducer from './Components/Statusbar/statusSlice';
 export const store = configureStore({
   reducer: {
     configs: configsReducer,
-    cookie: cookiereducer,
     escs: escsReducer,
     language: languageReducer,
     log: logReducer,
