@@ -32,7 +32,7 @@
     "scheduler": "^0.20.2",
     "semver": "^7.3.8",
     "ua-parser-js": "^1.0.2",
-    "web-serial-polyfill": "https://github.com/stylesuxx/web-serial-polyfill.git#temporary-fix",
+    "web-serial-polyfill": "^1.0.15",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.4.2",
     "workbox-broadcast-update": "^6.4.2",
@@ -64,7 +64,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react/jsx-no-leaked-render": "off",
+      "react/no-unknown-property": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -88,6 +92,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "ajv": "^8.17.1",
     "codecov": "^3.8.3",
     "eslint": "^8.7.0",
     "eslint-config-react-app": "^7.0.0",
@@ -129,6 +134,6 @@
     ]
   },
   "engines": {
-    "node": "22.x"
+    "node": ">=22.0.0"
   }
 }

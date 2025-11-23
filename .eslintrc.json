@@ -66,7 +66,9 @@
     "object-property-newline": "error",
     "default-case": "warn",
     "no-template-curly-in-string": "off",
-    "no-unreachable": "warn"
+    "no-unreachable": "warn",
+    "react/jsx-no-leaked-render": "off",
+    "react/no-unknown-property": "off"
   },
   "settings": {
     "react": {
