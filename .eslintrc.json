@@ -68,7 +68,10 @@
     "no-template-curly-in-string": "off",
     "no-unreachable": "warn",
     "react/jsx-no-leaked-render": "off",
-    "react/no-unknown-property": "off"
+    "react/no-unknown-property": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-max-props-per-line": "off",
+    "object-curly-newline": "off"
   },
   "settings": {
     "react": {
