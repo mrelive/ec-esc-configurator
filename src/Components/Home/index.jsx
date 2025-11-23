@@ -262,6 +262,57 @@ function InfoFooter() {
   );
 }
 
+function CreditSection() {
+  return (
+    <div className="credit-section">
+      <div className="credit-content">
+        <p>
+          This project is a fork of{' '}
+          <a
+            href="https://github.com/stylesuxx/esc-configurator"
+            rel="noreferrer"
+            target="_blank"
+          >
+            ESC Configurator
+          </a>
+          {' '}by Chris Landa (stylesuxx) and contributors.
+        </p>
+        <p>
+          Originally based on{' '}
+          <a
+            href="https://github.com/blheli-configurator/blheli-configurator"
+            rel="noreferrer"
+            target="_blank"
+          >
+            BLHeli Configurator
+          </a>
+          {' '}by Andrey Mironov (DieHertz) and Michael Keller (mikeller),
+          which itself was derived from{' '}
+          <a
+            href="https://github.com/cleanflight/cleanflight-configurator"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Cleanflight Configurator
+          </a>
+          {' '}and{' '}
+          <a
+            href="https://github.com/multiwii/baseflight-configurator"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Baseflight Configurator
+          </a>
+          .
+        </p>
+        <p>
+          Special thanks to all the developers and contributors who made this project possible.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Home() {
   return (
     <section id="tab-landing">
@@ -271,6 +322,7 @@ function Home() {
         <FirmwareSection />
         <CommunitySection />
         <InfoFooter />
+        <CreditSection />
       </div>
     </section>
   );

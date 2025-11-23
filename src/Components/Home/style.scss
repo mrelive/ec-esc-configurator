@@ -326,6 +326,43 @@
       }
     }
   }
+
+  /* --- Credits Section --- */
+  .credit-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--border-dim);
+    border-radius: 8px;
+
+    .credit-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+
+      p {
+        margin-bottom: 0.8rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #fff;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 @keyframes float {
