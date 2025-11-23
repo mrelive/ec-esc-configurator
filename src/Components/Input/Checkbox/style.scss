@@ -3,6 +3,29 @@
   margin-bottom: 6px;
   padding-bottom: 5px;
   margin-top: 2px;
+  color: var(--text-primary);
+
+  input[type="checkbox"] {
+    accent-color: var(--accent-cyan);
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+      color: var(--accent-cyan);
+    }
+  }
 
   &:last-child {
     border-bottom: none;

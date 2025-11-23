@@ -2,8 +2,8 @@
   float: right;
   max-width: 400px;
   z-index: 100;
-  border: 1px solid red;
-  background: white;
+  border: 2px solid var(--accent-pink);
+  background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(255, 0, 110, 0.08));
   margin: 20px;
   margin-top: 7px;
   margin-bottom: 0;
@@ -11,8 +11,16 @@
   padding: 10px;
   font-size: 16px;
   text-align: center;
+  color: var(--accent-pink);
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(255, 0, 110, 0.2);
 
   a {
     text-decoration: underline;
+    color: var(--accent-cyan);
+
+    &:hover {
+      color: var(--accent-purple);
+    }
   }
 }

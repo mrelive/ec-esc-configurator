@@ -52,8 +52,6 @@ function Log() {
         </button>
       </div>
 
-      <div id="scrollicon" />
-
       <div className="wrapper">
         {messageElements}
       </div>

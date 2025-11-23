@@ -1,137 +1,128 @@
+@import "../../global.scss";
+
 .port-picker {
-  position: relative;
-  float: right;
   display: flex;
-  padding-left: 10px;
-  padding-bottom: 8px;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
 
-  @media only screen and (width <= 600px) {
-    width: 230px;
-  }
-
-  button {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 20px;
-    background-color: var(--color-primary);
-    border-radius: 3px;
-    border: 1px solid var(--color-primary);
-    color: #fff;
-    float: right;
-    font-family: 'open_sansbold', Arial, sans-serif;
-    font-size: 12px;
-    text-shadow: 0 1px rgb(0 0 0 / 25%);
-    display: block;
-    cursor: pointer;
-    transition: all ease 0.2s;
-    padding: 0;
-    padding-left: 9px;
-    padding-right: 9px;
-    line-height: 28px;
-  }
-
-  .disabled,
-  button[disabled] {
-    opacity: 0.5;
-  }
-
-  #serial-permission-overlay {
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(0 0 0 / 70%);
-
-    button {
-      margin-right: 0;
-    }
-  }
-
-  #portsinput {
-    margin-top: 12px;
-    margin-right: 20px;
-
-    @media only screen and (width <= 600px) {
-      margin-right: 0;
-    }
-  }
-
-  .connect-state {
-    height: 20px;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-    font-family: 'open_sansregular', Arial, sans-serif;
-    text-shadow: 0 1px rgb(0 0 0 / 25%);
-    margin-top: -1px;
-  }
-
-  #connect-button-wrapper {
+  .port-select-wrapper {
     position: relative;
-    left: 0;
-    margin-top: 12px;
-    margin-right: 20px;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
+    min-width: 200px;
 
-    @media only screen and (width <= 600px) {
-      margin-right: 6px;
+    select {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-dim);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      appearance: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+      }
     }
 
-    button {
-      background: none;
-      border: 0;
-      margin: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--neon-cyan);
+      pointer-events: none;
+    }
+  }
 
-      .icon {
-        display: block;
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        box-shadow: 0 1px 2px rgb(0 0 0 / 35%);
-        margin: 0;
-        transition: none;
+  .connect-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 
-        &.connect {
-          background-color: var(--color-secondary);
-          border: 1px solid var(--color-primary);
-          background-image: url("images/icons/cf_icon_usb2_white.svg");
-          background-repeat: no-repeat;
-          background-size: 44px;
-          background-position: center 6px;
-          transition: none;
-        }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    &:hover {
+      background: rgba(0, 243, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+      
+      &::before {
+        left: 100%;
       }
+    }
 
-      &:hover:not([disabled]) {
-        .connect {
-          background-color: var(--color-primary);
-        }
-      }
+    &.connected {
+      border-color: var(--neon-pink);
+      color: var(--neon-pink);
 
-      &.active,
-      &.active:hover:not([disabled]) {
-        .connect {
-          background-color: #e60000;
-          border: 1px solid #fe0000;
-          background-image: url("images/icons/cf_icon_usb1_white.svg");
-          transition: none;
-        }
+      &:hover {
+        background: rgba(255, 0, 60, 0.1);
+        box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
       }
+    }
 
-      &.active:hover:not([disabled]) {
-        .connect:hover {
-          background-color: #f21212;
-          border: 1px solid #f21212;
-        }
-      }
+    &:disabled {
+      border-color: var(--text-dim);
+      color: var(--text-dim);
+      cursor: not-allowed;
+      box-shadow: none;
+      background: transparent;
+    }
+  }
+
+  .refresh-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--neon-cyan);
+    }
+    
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 }

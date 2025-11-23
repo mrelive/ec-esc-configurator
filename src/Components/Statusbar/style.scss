@@ -1,36 +1,31 @@
 .status-bar {
-  position: fixed;
-  bottom: 0;
-  width: calc(100% - 20px);
-  height: 20px;
-  line-height: 20px;
-  padding: 0 10px;
-  border-top: 1px solid #7d7d79;
-  background-color: #bfbeb5;
+  width: 100%;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
   span {
     display: block;
-    float: left;
-    padding-right: 10px;
-    margin-right: 10px;
-    border-right: 1px solid #7d7d79;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    font-family: 'Rajdhani', sans-serif;
+    
+    &:hover {
+      color: var(--neon-cyan);
+    }
   }
 
   .status-bar__version {
-    float: right;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  @media only screen and (width <= 600px) {
-    & {
-      display: flex;
-      justify-content: center;
-
-      span {
-        float: none;
-      }
-    }
+    margin-top: 0.5rem;
+    color: var(--text-dim);
+    opacity: 0.5;
+    font-size: 0.7rem;
   }
 }

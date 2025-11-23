@@ -4,6 +4,7 @@
   right: -245px;
   top: 137px;
   height: calc(100% - 137px - 21px);
+  transition: right 0.3s ease;
 
   @media only screen and (width <= 600px) {
     top: 170px;
@@ -13,14 +14,16 @@
   .changelog__wrapper {
     height: 100%;
     padding: 0 20px;
-    border-left: 5px solid var(--color-secondary);
+    border-left: 5px solid var(--accent-cyan);
     overflow-y: auto;
     display: none;
+    background: linear-gradient(135deg, rgba(20, 24, 41, 0.95), rgba(10, 14, 26, 0.95));
   }
 
   &.expanded {
     right: 0;
-    background: white;
+    background: linear-gradient(135deg, rgba(20, 24, 41, 0.95), rgba(10, 14, 26, 0.95));
+    box-shadow: -5px 0 20px rgba(0, 217, 255, 0.1);
 
     .changelog__wrapper {
       display: block;
@@ -32,20 +35,30 @@
     top: 50px;
     right: 212px;
     position: absolute;
-    background: var(--color-secondary);
+    background: var(--accent-cyan);
     border-radius: 5px 5px 0 0;
     border-bottom: none;
     display: block;
     padding: 5px 10px;
     width: 70px;
     text-align: center;
-    color: white;
+    color: var(--bg-primary);
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+
+    &:hover {
+      background: var(--accent-purple);
+      box-shadow: 0 0 15px rgba(183, 0, 255, 0.3);
+    }
   }
 
   .changelog__title {
     margin: 20px 0;
     font-size: 16px;
+    color: var(--accent-cyan);
+    font-weight: 600;
   }
 
   .changelog__content {
@@ -55,7 +68,8 @@
       display: block;
       font-weight: bold;
       padding-bottom: 5px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 2px solid var(--accent-blue);
+      color: var(--accent-cyan);
     }
 
     ul {
@@ -64,11 +78,13 @@
       li {
         font-weight: normal;
         margin-bottom: 5px;
+        color: var(--text-secondary);
       }
     }
 
     p {
       margin-bottom: 20px;
+      color: var(--text-secondary);
     }
   }
 }

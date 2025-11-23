@@ -2,13 +2,12 @@
   max-width: 600px;
   width: 100%;
 
-  // margin-bottom: 65px;
-
   .gui-box {
     .spacer-box {
       p {
         font-weight: normal;
         padding-bottom: 10px;
+        color: var(--text-secondary);
       }
     }
 
@@ -25,10 +24,11 @@
 
       .battery-state {
         font-weight: bold;
+        color: var(--accent-cyan);
 
         &.danger {
           font-weight: bold;
-          color: red;
+          color: var(--accent-pink);
         }
       }
     }
@@ -49,30 +49,39 @@
     }
 
     .rc-slider-tooltip-inner {
-      background-color: transparent;
-      color: black;
-      font-weight: normal;
-      box-shadow: none;
+      background: rgba(20, 24, 41, 0.9);
+      color: var(--accent-cyan);
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 3px;
     }
   }
 
   .rc-slider-track {
-    background: var(--color-primary);
+    background: var(--accent-cyan);
   }
 
   .rc-slider-handle {
     margin-top: -7px;
     width: 19px;
     height: 19px;
-    border: 0;
-    background: var(--color-primary);
+    border: 2px solid var(--accent-cyan);
+    background: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+
+    &:hover {
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+    }
   }
 
   .rc-slider-disabled {
     background: transparent;
 
     .rc-slider-handle {
-      background: #ccc;
+      background: var(--text-tertiary);
+      border-color: var(--text-tertiary);
+      box-shadow: none;
     }
   }
 
@@ -83,6 +92,7 @@
   .checkbox {
     span {
       margin-left: 5px;
+      color: var(--text-secondary);
     }
   }
 
@@ -101,6 +111,7 @@
     #master-slider {
       h3 {
         padding-bottom: 20px;
+        color: var(--accent-cyan);
       }
 
       .input-range {

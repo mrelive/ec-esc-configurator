@@ -1,26 +1,23 @@
 #content {
   margin-top: 0;
   padding: 0;
-  padding-top: 137px;
-
-  /* padding-bottom: 50px; */
-  background-color: lightgray;
+  background: transparent;
   overflow-x: hidden;
-  overflow-y: auto;
-  border: 0 solid #848484;
-  transform: rotateX(0deg); /* DO NOT REMOVE! this fixes the UI freezing bug on MAC OS X */
+  overflow-y: visible; /* Let parent handle scroll */
+  border: 0 solid transparent;
+  transform: rotateX(0deg);
   transition: all 0.3s;
+  height: 100%;
 
   .note {
-    background-color: #fff3cd;
-    border-color: #ffeeba;
-    color: #856404;
-
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.15), rgba(57, 255, 20, 0.08));
+    border: 2px solid var(--accent-green);
+    color: var(--accent-green);
     position: relative;
     padding: 0.75rem 1.25rem;
     margin-bottom: 10px;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
 
     @media screen and (width <= 768px) {
       margin-bottom: 18px;
@@ -28,16 +25,18 @@
 
     &.warning {
       margin-bottom: 10px;
-      color: #721c24;
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
+      color: #ffaa00;
+      background: linear-gradient(135deg, rgba(255, 170, 0, 0.15), rgba(255, 170, 0, 0.08));
+      border-color: #ffaa00;
+      box-shadow: 0 0 10px rgba(255, 170, 0, 0.1);
     }
   }
 
   .note.alert {
-    background-color: #bc544b;
-    border: 1px solid #f00;
-    color: white;
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(255, 0, 110, 0.08));
+    border: 2px solid var(--accent-pink);
+    color: var(--accent-pink);
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.2);
 
     p {
       margin-bottom: 10px;
@@ -46,10 +45,6 @@
         margin-bottom: 0;
       }
     }
-  }
-
-  @media only screen and (width <= 600px) {
-    padding-top: 170px
   }
 
   .tab {
@@ -68,51 +63,65 @@
       padding-right: 10px;
       padding-top: 4px;
       margin-bottom: 0;
-      color: white;
+      color: var(--accent-cyan);
+      font-weight: 600;
     }
 
     .gui-box {
       margin-bottom: 10px;
-      font-weight: bold;
-      font-family: 'open_sanssemibold', Arial, sans-serif;
-      background-color: #FFF;
-      border: 1px solid var(--color-tertiary);
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: rgba(20, 24, 41, 0.6);
+      border: 2px solid var(--accent-blue);
       border-radius: 4px;
       width: calc(100% - 2px);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 153, 255, 0.1);
+      transition: all 0.3s;
+
+      &:hover {
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+      }
 
       &.grey {
-        background-color: #f9f9f9
+        background: rgba(10, 14, 26, 0.4);
       }
 
       .gui-box-titlebar {
         margin-bottom: 0;
-        background-color: var(--color-tertiary);
+        background: linear-gradient(180deg, rgba(0, 217, 255, 0.15), rgba(0, 153, 255, 0.1));
         border-radius: 3px 3px 0 0;
         font-size: 13px;
         width: 100%;
         height: 27px;
         padding-bottom: 0;
-        font-family: 'open_sanssemibold', Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        border-bottom: 2px solid var(--accent-blue);
+        padding: 5px 10px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
       }
 
       span {
         font-weight: normal;
-        font-family: 'open_sansregular', Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         line-height: 19px;
-        color: #4F4F4F;
+        color: var(--text-secondary);
         font-size: 11px;
       }
     }
 
     .alert {
-      color: #721c24;
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
+      color: var(--accent-pink);
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.15), rgba(255, 0, 110, 0.08));
+      border: 2px solid var(--accent-pink);
       position: relative;
       padding: 0.75rem 1.25rem;
       margin-bottom: 10px;
-      border: 1px solid transparent;
-      border-radius: 0.25rem;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(255, 0, 110, 0.15);
 
       p {
         margin-bottom: 10px;
@@ -129,7 +138,7 @@
 
       span,
       a {
-        color: #721c24;
+        color: var(--accent-pink);
         font-size: inherit;
       }
     }
@@ -145,6 +154,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        color: var(--text-primary);
       }
 
       .input-wrapper {
@@ -154,8 +164,23 @@
         select {
           width: 100%;
           height: 20px;
-          border: 1px solid silver;
+          border: 2px solid var(--accent-blue);
           border-radius: 3px;
+          background: rgba(20, 24, 41, 0.6);
+          color: var(--text-primary);
+          padding: 4px 8px;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          transition: all 0.2s;
+
+          &:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+            outline: none;
+          }
+
+          &:hover {
+            border-color: var(--accent-cyan);
+          }
         }
       }
 

@@ -5,11 +5,11 @@
   position: fixed;
   bottom: 21px;
   width: 100%;
-  background-color: #EFEFEF;
-  box-shadow: rgb(0 0 0 / 10%) 0 -3px 8px;
+  background: linear-gradient(180deg, rgba(20, 24, 41, 0.9), rgba(20, 24, 41, 0.8));
+  box-shadow: 0 -4px 15px rgba(0, 153, 255, 0.1);
   padding: 10px 0;
   overflow: hidden;
-  border-top: 1px solid #F9F9F9;
+  border-top: 2px solid var(--accent-blue);
   display: flex;
   flex-direction: row;
   justify-content: space-between;

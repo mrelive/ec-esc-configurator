@@ -8,13 +8,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
 
   .overlay__wrapper {
-    padding: 10px;
-    background: white;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(20, 24, 41, 0.95), rgba(10, 14, 26, 0.95));
+    border: 2px solid var(--accent-cyan);
     max-width: 500px;
     width: 80%;
     position: relative;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
 
     .overlay__close {
       cursor: pointer;
@@ -22,12 +27,20 @@
       top: 10px;
       right: 10px;
       font-weight: bold;
+      color: var(--accent-cyan);
+      transition: all 0.2s;
+
+      &:hover {
+        color: var(--accent-pink);
+        transform: scale(1.1);
+      }
     }
 
     h3 {
       padding-bottom: 5px;
       margin-bottom: 10px;
-      border-bottom: 1px solid silver;
+      border-bottom: 2px solid var(--accent-blue);
+      color: var(--accent-cyan);
     }
   }
 }

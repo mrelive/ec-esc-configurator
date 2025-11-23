@@ -1,6 +1,6 @@
 .not-in-sync::before {
   content: '*';
-  color: red;
+  color: var(--accent-pink);
   font-weight: bold;
 }
 
@@ -9,8 +9,10 @@ fieldset:not(:first-child) {
 
   legend {
     width: 100%;
-    border-bottom: 1px solid var(--color-tertiary);
+    border-bottom: 2px solid var(--accent-blue);
     padding-top: 0px;
     padding-bottom: 7px;
+    color: var(--accent-cyan);
+    font-weight: 600;
   }
 }

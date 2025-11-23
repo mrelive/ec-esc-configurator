@@ -17,19 +17,32 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: lightgray;
+    background: var(--accent-cyan);
     display: inline-block;
-    color: black;
+    color: var(--bg-primary);
     text-align: center;
     line-height: 15px;
     font-size: 12px;
     font-weight: bold;
     margin-right: 5px;
     cursor: pointer;
-    z-index: -1;
+    z-index: 1;
+    transition: all 0.2s;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+
+    &:hover {
+      background: var(--accent-purple);
+      box-shadow: 0 0 15px rgba(183, 0, 255, 0.3);
+    }
   }
 
   .tooltip {
     max-width: 200px;
+    background: rgba(20, 24, 41, 0.95);
+    border: 2px solid var(--accent-cyan);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
   }
 }

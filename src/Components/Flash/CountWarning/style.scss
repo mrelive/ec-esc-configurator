@@ -2,6 +2,7 @@
   p {
     padding-bottom: 10px;
     font-weight: normal;
+    color: var(--text-secondary);
   }
 
   ul {
@@ -11,6 +12,7 @@
       list-style-type: disc;
       font-weight: normal;
       padding-bottom: 5px;
+      color: var(--text-secondary);
     }
   }
 }

@@ -35,50 +35,27 @@ function BaudRates({
   ));
 
   return (
-    <select
-      className="dropdown__select"
-      defaultValue="115200"
-      disabled={disabled}
-      id="baud"
-      name={t('baudRate')}
-      onChange={handleChange}
-      title={t('baudRate')}
+    <div
+      className="port-select-wrapper"
+      style={{ width: '120px' }}
     >
-      {rateElements}
-    </select>
+      <select
+        defaultValue="115200"
+        disabled={disabled}
+        id="baud"
+        name={t('baudRate')}
+        onChange={handleChange}
+        title={t('baudRate')}
+      >
+        {rateElements}
+      </select>
+    </div>
   );
 }
 
 BaudRates.propTypes = {
   disabled: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-};
-
-function PermissionOverlay({
-  handleSetPort,
-  show,
-}) {
-  const { t } = useTranslation('common');
-
-  if(!show) {
-    return(
-      <div id="serial-permission-overlay">
-        <button
-          onClick={handleSetPort}
-          type="button"
-        >
-          {t('serialPermission')}
-        </button>
-      </div>
-    );
-  }
-
-  return null;
-}
-
-PermissionOverlay.propTypes = {
-  handleSetPort: PropTypes.func.isRequired,
-  show: PropTypes.bool.isRequired,
 };
 
 function Ports({
@@ -98,16 +75,17 @@ function Ports({
   ));
 
   return(
-    <select
-      className="dropdown__select"
-      disabled={disabled}
-      id="port"
-      name={t('port')}
-      onChange={handleChange}
-      title={t('port')}
-    >
-      {portOptions}
-    </select>
+    <div className="port-select-wrapper">
+      <select
+        disabled={disabled}
+        id="port"
+        name={t('port')}
+        onChange={handleChange}
+        title={t('port')}
+      >
+        {portOptions}
+      </select>
+    </div>
   );
 }
 
@@ -147,59 +125,47 @@ function PortPicker({
 
   return (
     <div className="port-picker">
-      <PermissionOverlay
-        handleSetPort={onSetPort}
-        show={hasPort}
-      />
-
-      <div id="portsinput">
-        <div
-          className={`dropdown dark ${open ? 'disabled' : ''}`}
-          disabled={open}
-        >
-          <Ports
-            disabled={open}
-            handleChange={handlePortChange}
-            ports={ports}
-          />
-        </div>
-
-        <div
-          className={`dropdown dark ${open ? 'disabled' : ''}`}
-          disabled={open}
-        >
-          <BaudRates
-            disabled={open}
-            handleChange={handleBaudRateChange}
-          />
-        </div>
-
-        <div className="button button--dark">
-          <button
-            disabled={open}
-            onClick={onSetPort}
-            type="button"
-          >
-            {t('openPortSelection')}
-          </button>
-        </div>
-      </div>
-
-      <div id="connect-button-wrapper">
+      {!hasPort && (
         <button
-          className={`${open ? 'active' : ''}`}
-          disabled={!isIdle}
-          name="connect"
-          onClick={open ? onDisconnect : onConnect}
+          className="refresh-btn"
+          onClick={onSetPort}
+          title={t('openPortSelection')}
           type="button"
         >
-          <span className="icon connect" />
-
-          <span className="connect-state">
-            {open ? t('disconnect') : t('connect')}
-          </span>
+          <svg
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M23 4v6h-6" />
+            <path d="M1 20v-6h6" />
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 1 20.49 15" />
+          </svg>
         </button>
-      </div>
+      )}
+
+      <Ports
+        disabled={open}
+        handleChange={handlePortChange}
+        ports={ports}
+      />
+
+      <BaudRates
+        disabled={open}
+        handleChange={handleBaudRateChange}
+      />
+
+      <button
+        className={`connect-btn ${open ? 'connected' : ''}`}
+        disabled={!isIdle}
+        onClick={open ? onDisconnect : onConnect}
+        type="button"
+      >
+        {open ? t('disconnect') : t('connect')}
+      </button>
     </div>
   );
 }

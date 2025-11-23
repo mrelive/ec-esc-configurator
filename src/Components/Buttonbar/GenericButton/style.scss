@@ -5,38 +5,40 @@
     margin-bottom: 0;
     margin-right: 20px;
     border-radius: 3px;
-    background-color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    color: #fff;
-    font-family: 'open_sansbold', Arial, sans-serif;
+    background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 217, 255, 0.1));
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 12px;
-    text-shadow: 0 1px rgb(0 0 0 / 25%);
     display: block;
     transition: all ease 0.2s;
     padding: 0;
     padding-left: 9px;
     padding-right: 9px;
     line-height: 28px;
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
   }
 
   button:hover {
-    background-color: var(--color-secondary);
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.15));
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
     transition: all ease 0.2s;
   }
 
   button:active {
-    background-color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.25), rgba(0, 217, 255, 0.1));
     transition: all ease 0.0s;
-    box-shadow: inset 0 1px 5px rgb(0 0 0 / 35%);
+    box-shadow: inset 0 0 8px rgba(0, 217, 255, 0.3);
   }
 
   button[disabled] {
     cursor: default;
-    color: #fff;
-    background-color: #AFAFAF;
-    border: 1px solid #AFAFAF;
+    color: var(--text-tertiary);
+    background: rgba(20, 24, 41, 0.3);
+    border: 2px solid var(--text-tertiary);
     pointer-events: none;
-    text-shadow: none;
+    box-shadow: none;
     opacity: 0.5;
   }
 }

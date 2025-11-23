@@ -28,6 +28,7 @@
     "react/no-array-index-key": "warn",
     "react/no-danger": "warn",
     "react/forbid-component-props": "off",
+    "react/jsx-newline": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "testing-library/no-container": "error",

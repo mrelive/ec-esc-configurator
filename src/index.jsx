@@ -4,6 +4,8 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import { store } from './store';
 import settings from './settings.json';
 import App from './Containers/App';
@@ -36,7 +38,9 @@ ReactDOM.render(
     <I18nextProvider i18n={i18next}>
       <Suspense fallback="loading">
         <Provider store={store}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </Provider>
       </Suspense>
     </I18nextProvider>

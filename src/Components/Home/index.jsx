@@ -3,14 +3,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
-
-import {
-  dummy as melodyEditorDummy,
-  show as showMelodyEditor,
-} from '../MelodyEditor/melodiesSlice';
 
 import bluejay from './images/bluejay_logo.png';
 import './style.scss';
@@ -34,26 +28,16 @@ function Install() {
 
   return(
     <div className={`install-wrapper ${showInstall ? 'active' : ''}`}>
-      <div className="install">
-        <div className="description">
-          <ReactMarkdown>
-            {t('homeInstallLine1')}
-          </ReactMarkdown>
-
-          <ReactMarkdown>
-            {t('homeInstallLine2')}
-          </ReactMarkdown>
-        </div>
-
-        <div className="default-btn">
-          <button
-            onClick={handleInstallToHomescreen}
-            type="button"
-          >
-            {t('addToHomeScreen')}
-          </button>
-        </div>
-      </div>
+      <button
+        className="install-btn"
+        onClick={handleInstallToHomescreen}
+        type="button"
+      >
+        <span className="icon">
+          ↓
+        </span>
+        {t('addToHomeScreen')}
+      </button>
     </div>
   );
 }
@@ -102,12 +86,6 @@ function HomeColumnLeft() {
 
 function HomeColumnCenter() {
   const { t } = useTranslation('common');
-  const dispatch = useDispatch();
-
-  const handleOpenMelodyEditor = useCallback(() => {
-    dispatch(melodyEditorDummy());
-    dispatch(showMelodyEditor());
-  }, [dispatch]);
 
   return(
     <div className="column third_center text2 tab">
@@ -199,15 +177,6 @@ function HomeColumnCenter() {
                 <ReactMarkdown>
                   {t('bluejayTextLine2')}
                 </ReactMarkdown>
-              </div>
-
-              <div className="default-btn melody-editor-button">
-                <button
-                  onClick={handleOpenMelodyEditor}
-                  type="button"
-                >
-                  {t('openMelodyEditor')}
-                </button>
               </div>
 
               <div>
@@ -330,60 +299,25 @@ function HomeColumnRight() {
 }
 
 function Home() {
-  const { t } = useTranslation('common');
-
   return (
-    <div id="content">
-      <div id="tab-landing">
-        <div className="content_wrapper">
-          <div className="content_top">
-            <div
-              align="center"
-              className="logowrapper"
-            >
-              <div
-                align="center"
-                className="line-1"
-              >
-                <ReactMarkdown components={{ p: 'span' }}>
-                  {t('homeWelcome')}
-                </ReactMarkdown>
-              </div>
-
-              <Install />
-
-              <div>
-                <div align="center">
-                  <ReactMarkdown components={{ p: 'div' }}>
-                    {t('betaWarningLine1')}
-                  </ReactMarkdown>
-
-                  <br />
-
-                  <ReactMarkdown components={{ p: 'div' }}>
-                    {t('betaWarningLine2')}
-                  </ReactMarkdown>
-                </div>
-
-                <div align="center">
-                  <ReactMarkdown components={{ p: 'div' }}>
-                    {t('findHelp')}
-                  </ReactMarkdown>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="content_mid">
-            <HomeColumnLeft />
-
-            <HomeColumnCenter />
-
-            <HomeColumnRight />
+    <section id="tab-landing">
+      <div className="content_wrapper">
+        <div className="landing-header">
+          <h1>
+            EC ESC CONFIGURATOR
+          </h1>
+          <div className="landing-actions">
+            <Install />
           </div>
         </div>
+        
+        <div className="content_mid">
+          <HomeColumnLeft />
+          <HomeColumnCenter />
+          <HomeColumnRight />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 export default Home;

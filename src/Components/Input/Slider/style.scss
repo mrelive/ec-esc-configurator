@@ -7,24 +7,29 @@
   font-size: 12px;
   font-weight: normal;
   display: inline-block;
+  color: var(--text-primary);
 }
 
 .input-range__label--min,
 .input-range__label--max {
-    display: none;
+  display: none;
 }
 
 .input-range__label--value {
-    margin-left: 1rem;
+  margin-left: 1rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
 }
 
 .input-range__slider {
-  background: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  background: var(--accent-cyan);
+  border: 2px solid var(--accent-blue);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
 }
 
 .input-range__track--active {
-  background: var(--color-primary);
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
 }
 
 .number {
@@ -41,11 +46,15 @@
   .disabled {
     width: 43px;
     padding: 0 5px;
-    background-color: #ececec;
+    background: rgba(20, 24, 41, 0.4);
+    color: var(--text-tertiary);
+    border: 2px solid var(--accent-blue);
+    border-radius: 3px;
   }
 
   span.label {
     margin-left: 3px;
     float: left;
+    color: var(--text-secondary);
   }
 }

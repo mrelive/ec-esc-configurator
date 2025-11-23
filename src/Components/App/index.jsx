@@ -8,6 +8,12 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import {
+  FaCog,
+  FaHome,
+  FaMusic,
+  FaTachometerAlt,
+} from 'react-icons/fa';
 
 import AppSettings from '../AppSettings';
 import CookieConsent from '../CookieConsent';
@@ -20,7 +26,11 @@ import Statusbar from '../Statusbar';
 
 import { selectState } from '../../Containers/App/stateSlice';
 import { show as showAppSettings } from '../AppSettings/settingsSlice';
-import { selectShow as selectShowMelodyEditor } from '../MelodyEditor/melodiesSlice';
+import {
+  dummy as melodyEditorDummy,
+  selectShow as selectShowMelodyEditor,
+  show as showMelodyEditor,
+} from '../MelodyEditor/melodiesSlice';
 
 import './style.scss';
 
@@ -45,7 +55,7 @@ function App({
   const { t } = useTranslation('common');
   const dispatch = useDispatch();
 
-  const showMelodyEditor = useSelector(selectShowMelodyEditor);
+  const showMelodyEditorState = useSelector(selectShowMelodyEditor);
   const actions = useSelector(selectState);
 
   const isIdle = !Object.values(actions).some((element) => element);
@@ -54,13 +64,71 @@ function App({
     dispatch(showAppSettings());
   }, [dispatch]);
 
-  return (
-    <div>
-      <div className="main">
-        <header className="main__header">
-          <div className="main__bar">
-            <div className="main__logo" />
+  const handleOpenMelodyEditor = useCallback(() => {
+    dispatch(melodyEditorDummy());
+    dispatch(showMelodyEditor());
+  }, [dispatch]);
 
+  return (
+    <div className="app-layout">
+      <aside className="app-sidebar">
+        <div className="sidebar-logo">
+          <div className="logo-icon" />
+          <div className="logo-text">
+            <span>
+              EC ESC
+            </span>
+            <span className="highlight">
+              CONFIGURATOR
+            </span>
+          </div>
+        </div>
+
+        <nav className="sidebar-nav">
+          <div className={`nav-item ${!actions.open ? 'active' : ''}`}>
+            <FaHome className="icon" />
+            <span className="label">
+              {t('home')}
+            </span>
+          </div>
+          <div className={`nav-item ${actions.open ? 'active' : ''}`}>
+            <FaTachometerAlt className="icon" />
+            <span className="label">
+              {t('dashboard')}
+            </span>
+          </div>
+          <div
+            className="nav-item"
+            onClick={handleOpenMelodyEditor}
+          >
+            <FaMusic className="icon" />
+            <span className="label">
+              {t('openMelodyEditor')}
+            </span>
+          </div>
+        </nav>
+
+        <div className="sidebar-status">
+          <Statusbar getUtilization={getUtilization} />
+        </div>
+
+        <div className="sidebar-footer">
+          <div
+            className="settings-trigger"
+            onClick={onAppSettingsShow}
+          >
+            <FaCog className="icon" />
+            <span>
+              {t('settings')}
+            </span>
+          </div>
+          <LanguageSelection />
+        </div>
+      </aside>
+
+      <div className="app-main">
+        <header className="app-topbar">
+          <div className="topbar-actions">
             <PortPicker
               isIdle={isIdle}
               onChangePort={onSerialPortChange}
@@ -68,45 +136,33 @@ function App({
               onDisconnect={onSerialDisconnect}
               onSetPort={onSerialSetPort}
             />
-
-            <div className="main__settings">
-              <LanguageSelection />
-
-              <div className="button button--dark">
-                <button
-                  onClick={onAppSettingsShow}
-                  type="button"
-                >
-                  {t('settings')}
-                </button>
-              </div>
-
-            </div>
           </div>
-
-          <Log />
+          <div className="topbar-log">
+            <Log />
+          </div>
         </header>
 
-        <MainContent
-          getBatteryState={getBatteryState}
-          onAllMotorSpeed={onAllMotorSpeed}
-          onFirmwareDump={onEscDump}
-          onFlashUrl={onEscsFlashUrl}
-          onLocalSubmit={onEscsFlashFile}
-          onReadEscs={onEscsRead}
-          onResetDefaultls={onEscsWriteDefaults}
-          onSingleMotorSpeed={onSingleMotorSpeed}
-          onWriteSetup={onEscsWriteSettings}
-          progressReferences={progressReferences}
-        />
-
-        <Statusbar getUtilization={getUtilization} />
+        <main className="app-content">
+          <MainContent
+            getBatteryState={getBatteryState}
+            onAllMotorSpeed={onAllMotorSpeed}
+            onFirmwareDump={onEscDump}
+            onFlashUrl={onEscsFlashUrl}
+            onLocalSubmit={onEscsFlashFile}
+            onReadEscs={onEscsRead}
+            onResetDefaultls={onEscsWriteDefaults}
+            onSingleMotorSpeed={onSingleMotorSpeed}
+            onWriteSetup={onEscsWriteSettings}
+            progressReferences={progressReferences}
+          />
+        </main>
       </div>
 
       <AppSettings />
 
-      {showMelodyEditor &&
-        <MelodyEditor onWrite={onMelodyWrite} />}
+      {showMelodyEditorState && (
+        <MelodyEditor onWrite={onMelodyWrite} />
+      )}
 
       <CookieConsent />
 

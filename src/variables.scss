@@ -1,11 +1,35 @@
 :root {
-  /*
-  --color-primary: #125684;
-  --color-secondary: #2a84c4;
-  --color-tertiary: #252177;
-  */
-
-  --color-primary: #6A8347;
-  --color-secondary: #71B238;
-  --color-tertiary: #6A8347;
+  /* Cyberpunk Corporate Color System */
+  
+  /* Primary Colors - Deep Dark Base */
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #141829;
+  --bg-tertiary: #1a202c;
+  
+  /* Accent Colors - Neon Glow */
+  --accent-cyan: #00d9ff;
+  --accent-purple: #b700ff;
+  --accent-blue: #0099ff;
+  --accent-pink: #ff006e;
+  --accent-green: #39ff14;
+  
+  /* Text Colors */
+  --text-primary: #e0e0ff;
+  --text-secondary: #a0a0d0;
+  --text-tertiary: #707090;
+  
+  /* Legacy Support */
+  --color-primary: #0099ff;
+  --color-secondary: #00d9ff;
+  --color-tertiary: #b700ff;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0099ff 0%, #00d9ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #b700ff 0%, #0099ff 100%);
+  --gradient-dark: linear-gradient(135deg, #0a0e1a 0%, #141829 100%);
+  
+  /* Shadows & Glows */
+  --glow-cyan: 0 0 20px rgba(0, 217, 255, 0.5);
+  --glow-purple: 0 0 20px rgba(183, 0, 255, 0.5);
+  --glow-blue: 0 0 20px rgba(0, 153, 255, 0.5);
 }

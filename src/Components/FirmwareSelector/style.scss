@@ -19,6 +19,7 @@
 
     span:last-child {
       margin-left: 5px;
+      color: var(--text-primary);
     }
   }
 
@@ -32,7 +33,7 @@
   }
 
   .red {
-    color: red;
+    color: var(--accent-pink);
   }
 
   .default-btn {
@@ -51,13 +52,18 @@
 
       td {
         padding-right: 5px;
+        color: var(--text-primary);
       }
     }
 
     a {
-      color: white;
+      color: var(--accent-cyan);
       text-decoration: underline;
       font-weight: bold;
+
+      &:hover {
+        color: var(--accent-purple);
+      }
     }
   }
 }
