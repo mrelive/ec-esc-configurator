@@ -5,6 +5,16 @@ import React, {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
+import {
+  FaDiscord,
+  FaGithub,
+  FaMicrochip,
+  FaExclamationTriangle,
+  FaHeart,
+  FaCode,
+  FaInfoCircle,
+  FaRocket,
+} from 'react-icons/fa';
 
 import bluejay from './images/bluejay_logo.png';
 import './style.scss';
@@ -33,265 +43,197 @@ function Install() {
         onClick={handleInstallToHomescreen}
         type="button"
       >
-        <span className="icon">
-          ↓
-        </span>
+        <FaDownload className="icon" />
         {t('addToHomeScreen')}
       </button>
     </div>
   );
 }
 
-function HomeColumnLeft() {
-  const { t } = useTranslation('common');
-
-  const disclaimerLines = [1, 2, 3, 4, 5, 6].map((index) => {
-    const line = `homeDisclaimerTextLine${index}`;
-
-    return (
-      <ReactMarkdown key={line}>
-        {t(line)}
-      </ReactMarkdown>
-    );
-  });
-
-  return(
-    <div className="column third_left text1">
-      <div className="wrap">
-        <div className="summary-section">
-          <h2>
-            {t('homeDisclaimerHeader')}
-          </h2>
-
-          <div>
-            {disclaimerLines}
-          </div>
+function Hero() {
+  return (
+    <div className="hero-section">
+      <div className="hero-content">
+        <div className="hero-icon">
+          <FaRocket />
         </div>
-
-        <div className="summary-section">
-          <h2>
-            {t('homeAttributionHeader')}
-          </h2>
-
-          <div>
-            <ReactMarkdown>
-              {t('homeAttributionText')}
-            </ReactMarkdown>
+        <h1>EC ESC CONFIGURATOR</h1>
+        <p className="hero-subtitle">
+          Advanced configuration tool for BLHeli_S, Bluejay, and AM32 ESCs
+        </p>
+        <div className="hero-stats">
+          <div className="stat-item">
+            <FaMicrochip />
+            <span>Multi-Firmware Support</span>
+          </div>
+          <div className="stat-item">
+            <FaCode />
+            <span>Open Source</span>
           </div>
         </div>
       </div>
+      <Install />
     </div>
   );
 }
 
-function HomeColumnCenter() {
-  const { t } = useTranslation('common');
-
-  return(
-    <div className="column third_center text2 tab">
-      <div className="wrap">
-        <div className="alert">
-          <strong>
-            Attention Bluejay users!
-          </strong>
-
-          <br />
+function AlertSection() {
+  return (
+    <div className="alert-banner">
+      <div className="alert-icon">
+        <FaExclamationTriangle />
+      </div>
+      <div className="alert-content">
+        <strong>Attention Bluejay users!</strong>
+        <p>
           If you are still on 0.20.0, please upgrade to version 0.21.0 - there have been issues with stall detection and motor protection which might result in broken ESCs and/or motors.
-        </div>
-
-        <h2>
-          {t('homeExperimental')}
-        </h2>
-
-        <div>
-          {t('homeVersionInfo')}
-
-          <ul>
-            <li>
-              <a
-                href="https://github.com/bitdump/BLHeli"
-                rel="noreferrer"
-                target="_blank"
-              >
-                BLHeli_S
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://github.com/bird-sanctuary/bluejay"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Bluejay
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="https://github.com/am32-firmware/AM32"
-                rel="noreferrer"
-                target="_blank"
-              >
-                AM32
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="summary-section">
-          <h3>
-            BLHeli_S
-          </h3>
-
-          <section>
-            <div>
-              <ReactMarkdown>
-                {t('blhelisTextLine1')}
-              </ReactMarkdown>
-
-              <ReactMarkdown>
-                {t('blhelisTextLine2')}
-              </ReactMarkdown>
-            </div>
-          </section>
-        </div>
-
-        <div className="summary-section">
-          <h3>
-            Bluejay
-          </h3>
-
-          <section>
-            <img
-              alt="Bluejay"
-              src={bluejay}
-            />
-
-            <div>
-              <div>
-                <ReactMarkdown>
-                  {t('bluejayTextLine1')}
-                </ReactMarkdown>
-
-                <ReactMarkdown>
-                  {t('bluejayTextLine2')}
-                </ReactMarkdown>
-              </div>
-
-              <div>
-                <ReactMarkdown>
-                  {t('bluejaySupportedHardwareLine1')}
-                </ReactMarkdown>
-
-                <ReactMarkdown>
-                  {t('bluejaySupportedHardwareLine2')}
-                </ReactMarkdown>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <div className="summary-section">
-          <h3>
-            AM32
-          </h3>
-
-          <section>
-            <div>
-              <ReactMarkdown>
-                {t('blheli32ToAM32Line1')}
-              </ReactMarkdown>
-
-              <ReactMarkdown>
-                {t('blheli32ToAM32Line2')}
-              </ReactMarkdown>
-            </div>
-          </section>
-        </div>
+        </p>
       </div>
     </div>
   );
 }
 
-function HomeColumnRight() {
+function FirmwareCard({ title, icon, children, link }) {
+  return (
+    <div className="feature-card">
+      <div className="card-header">
+        {icon}
+        <h3>{title}</h3>
+      </div>
+      <div className="card-body">
+        {children}
+      </div>
+      {link && (
+        <a
+          className="card-link"
+          href={link}
+          rel="noreferrer"
+          target="_blank"
+        >
+          Learn More <FaGithub />
+        </a>
+      )}
+    </div>
+  );
+}
+
+function FirmwareSection() {
   const { t } = useTranslation('common');
+
+  return (
+    <div className="section-container">
+      <h2 className="section-title">Supported Firmware</h2>
+      <div className="cards-grid">
+        <FirmwareCard
+          icon={<FaMicrochip />}
+          link="https://github.com/bitdump/BLHeli"
+          title="BLHeli_S"
+        >
+          <ReactMarkdown>{t('blhelisTextLine1')}</ReactMarkdown>
+          <ReactMarkdown>{t('blhelisTextLine2')}</ReactMarkdown>
+        </FirmwareCard>
+
+        <FirmwareCard
+          icon={<img alt="Bluejay" className="card-icon-img" src={bluejay} />}
+          link="https://github.com/bird-sanctuary/bluejay"
+          title="Bluejay"
+        >
+          <ReactMarkdown>{t('bluejayTextLine1')}</ReactMarkdown>
+          <div className="highlight-box">
+            <ReactMarkdown>{t('bluejaySupportedHardwareLine1')}</ReactMarkdown>
+          </div>
+        </FirmwareCard>
+
+        <FirmwareCard
+          icon={<FaMicrochip />}
+          link="https://github.com/am32-firmware/AM32"
+          title="AM32"
+        >
+          <ReactMarkdown>{t('blheli32ToAM32Line1')}</ReactMarkdown>
+          <ReactMarkdown>{t('blheli32ToAM32Line2')}</ReactMarkdown>
+        </FirmwareCard>
+      </div>
+    </div>
+  );
+}
+
+function CommunitySection() {
+  const { t } = useTranslation('common');
+  
   const contributionItems = [1, 2, 3, 4, 5].map((index) => {
     const line = `homeContributionItem${index}`;
-
-    return(
-      <ReactMarkdown
-        components={{ p: 'li' }}
-        key={line}
-      >
-        {t(line)}
-      </ReactMarkdown>
+    return (
+      <li key={line}>
+        <ReactMarkdown components={{ p: 'span' }}>{t(line)}</ReactMarkdown>
+      </li>
     );
   });
 
-  return(
-    <div className="column third_right text3">
-      <div className="wrap">
-        <div className="summary-section">
-          <h2>
-            {t('homeDiscordHeader')}
-          </h2>
-
-          <div>
-            {t('homeDiscordText')}
+  return (
+    <div className="section-container">
+      <h2 className="section-title">Community & Support</h2>
+      <div className="cards-grid two-col">
+        <div className="feature-card discord-card">
+          <div className="card-header">
+            <FaDiscord />
+            <h3>Join the Community</h3>
           </div>
-
-          <a
-            className="discord-link"
-            href="https://discord.gg/QvSS5dk23C"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <img
-              alt="Discord"
-              className="discord"
-              data-canonical-src="https://img.shields.io/discord/822952715944460368.svg?label=&amp;logo=discord&amp;logoColor=ffffff&amp;color=7389D8&amp;labelColor=6A7EC2"
-              src="https://camo.githubusercontent.com/74d2e4746c6f20a2cf36068cd18d092724801f7ccd17e6bdce62e94d31f9ccb2/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f3832323935323731353934343436303336382e7376673f6c6162656c3d266c6f676f3d646973636f7264266c6f676f436f6c6f723d66666666666626636f6c6f723d373338394438266c6162656c436f6c6f723d364137454332"
-            />
-          </a>
+          <div className="card-body">
+            <p>{t('homeDiscordText')}</p>
+            <a
+              className="discord-button"
+              href="https://discord.gg/QvSS5dk23C"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FaDiscord /> Join Discord Server
+            </a>
+          </div>
         </div>
 
-        <div className="summary-section">
-          <h2>
-            {t('homeChinaHeader')}
-          </h2>
-
-          <ReactMarkdown components={{ p: 'div' }}>
-            {t('homeChinaText')}
-          </ReactMarkdown>
-        </div>
-
-        <div className="summary-section">
-          <h2>
-            {t('homeContributionHeader')}
-          </h2>
-
-          <div>
+        <div className="feature-card">
+          <div className="card-header">
+            <FaHeart />
+            <h3>{t('homeContributionHeader')}</h3>
+          </div>
+          <div className="card-body">
             <ReactMarkdown components={{ p: 'div' }}>
               {t('homeContributionText')}
             </ReactMarkdown>
-
-            <ul>
+            <ul className="contribution-list">
               {contributionItems}
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
 
-        <div className="summary-section">
-          <h3>
-            {t('whatsNextHeader')}
-          </h3>
+function InfoFooter() {
+  const { t } = useTranslation('common');
+  
+  const disclaimerLines = [1, 2, 3, 4, 5, 6].map((index) => (
+    <ReactMarkdown key={`disclaimer-${index}`}>
+      {t(`homeDisclaimerTextLine${index}`)}
+    </ReactMarkdown>
+  ));
 
-          <section>
-            <ReactMarkdown components={{ p: 'div' }}>
-              {t('whatsNextText')}
-            </ReactMarkdown>
-          </section>
+  return (
+    <div className="info-footer">
+      <div className="footer-column">
+        <h3><FaExclamationTriangle /> {t('homeDisclaimerHeader')}</h3>
+        <div className="disclaimer-text">
+          {disclaimerLines}
+        </div>
+      </div>
+      <div className="footer-column">
+        <h3><FaInfoCircle /> {t('homeAttributionHeader')}</h3>
+        <ReactMarkdown>{t('homeAttributionText')}</ReactMarkdown>
+        <div className="china-text">
+          <ReactMarkdown components={{ p: 'div' }}>
+            {t('homeChinaText')}
+          </ReactMarkdown>
         </div>
       </div>
     </div>
@@ -301,21 +243,12 @@ function HomeColumnRight() {
 function Home() {
   return (
     <section id="tab-landing">
-      <div className="content_wrapper">
-        <div className="landing-header">
-          <h1>
-            EC ESC CONFIGURATOR
-          </h1>
-          <div className="landing-actions">
-            <Install />
-          </div>
-        </div>
-        
-        <div className="content_mid">
-          <HomeColumnLeft />
-          <HomeColumnCenter />
-          <HomeColumnRight />
-        </div>
+      <div className="landing-container">
+        <Hero />
+        <AlertSection />
+        <FirmwareSection />
+        <CommunitySection />
+        <InfoFooter />
       </div>
     </section>
   );
