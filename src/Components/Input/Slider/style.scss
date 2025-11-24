@@ -46,15 +46,17 @@
   .disabled {
     width: 43px;
     padding: 0 5px;
-    background: rgba(20, 24, 41, 0.4);
-    color: var(--text-tertiary);
+    background: rgba(20, 24, 41, 0.6);
+    color: var(--text-secondary);
     border: 2px solid var(--accent-blue);
     border-radius: 3px;
+    opacity: 0.7;
   }
 
   span.label {
     margin-left: 3px;
     float: left;
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    font-weight: 500;
   }
 }

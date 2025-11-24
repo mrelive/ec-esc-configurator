@@ -14,5 +14,7 @@ fieldset:not(:first-child) {
     padding-bottom: 7px;
     color: var(--accent-cyan);
     font-weight: 600;
+    font-size: 14px;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
   }
 }
