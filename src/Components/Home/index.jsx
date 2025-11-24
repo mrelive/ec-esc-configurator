@@ -275,10 +275,12 @@ function CreditSection() {
           >
             ESC Configurator
           </a>
-          {' '}by Chris Landa (stylesuxx) and contributors.
+          {' '}
+          by Chris Landa (stylesuxx) and contributors.
         </p>
         <p>
-          Originally based on{' '}
+          Originally based on
+          {' '}
           <a
             href="https://github.com/blheli-configurator/blheli-configurator"
             rel="noreferrer"
@@ -286,8 +288,10 @@ function CreditSection() {
           >
             BLHeli Configurator
           </a>
-          {' '}by Andrey Mironov (DieHertz) and Michael Keller (mikeller),
-          which itself was derived from{' '}
+          {' '}
+          by Andrey Mironov (DieHertz) and Michael Keller (mikeller),
+          which itself was derived from
+          {' '}
           <a
             href="https://github.com/cleanflight/cleanflight-configurator"
             rel="noreferrer"
@@ -304,8 +308,7 @@ function CreditSection() {
             target="_blank"
           >
             Baseflight Configurator
-          </a>
-          .
+          </a>.
         </p>
         <p>
           Special thanks to all the developers and contributors who made this project possible.
