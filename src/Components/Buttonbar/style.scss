@@ -4,8 +4,8 @@
   z-index: 200;
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: 260px;
+  width: calc(100% - 260px);
   background: linear-gradient(180deg, rgba(20, 24, 41, 0.95), rgba(20, 24, 41, 0.9));
   backdrop-filter: blur(10px);
   box-shadow: 0 -4px 20px rgba(0, 243, 255, 0.15);
@@ -48,6 +48,8 @@
   }
 
   @media only screen and (width <= 600px) {
+    left: 0;
+    width: 100%;
     flex-direction: column-reverse;
 
     & > div {

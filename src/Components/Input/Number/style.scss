@@ -1,6 +1,6 @@
 .number-text {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 12px;
+  margin-bottom: 12px;
   width: 100%;
 
   &:last-child {
@@ -22,7 +22,8 @@
   span.label {
     margin-left: 3px;
     float: left;
-    color: var(--text-primary);
+    color: #ffffff;
     font-weight: 500;
+    font-size: 14px;
   }
 }

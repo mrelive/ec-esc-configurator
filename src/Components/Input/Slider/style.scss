@@ -1,11 +1,11 @@
 .input-range {
   padding-left: 3px;
-  height: 20px;
-  line-height: 20px;
+  height: 24px;
+  line-height: 24px;
   text-align: left;
-  margin: 0 14px 0 0;
-  font-size: 12px;
-  font-weight: normal;
+  margin: 8px 14px 8px 0;
+  font-size: 14px;
+  font-weight: 500;
   display: inline-block;
   color: var(--text-primary);
 }
@@ -17,19 +17,27 @@
 
 .input-range__label--value {
   margin-left: 1rem;
-  color: var(--accent-cyan);
-  font-weight: 600;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .input-range__slider {
   background: var(--accent-cyan);
-  border: 2px solid var(--accent-blue);
-  box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 18px;
+  height: 18px;
+}
+
+.input-range__track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-tertiary);
 }
 
 .input-range__track--active {
   background: var(--accent-cyan);
-  box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
 }
 
 .number {
@@ -44,19 +52,20 @@
   }
 
   .disabled {
-    width: 43px;
-    padding: 0 5px;
-    background: rgba(20, 24, 41, 0.6);
+    width: 50px;
+    padding: 6px 8px;
+    background: var(--bg-tertiary);
     color: var(--text-secondary);
-    border: 2px solid var(--accent-blue);
-    border-radius: 3px;
-    opacity: 0.7;
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    opacity: 0.6;
   }
 
   span.label {
     margin-left: 3px;
     float: left;
-    color: var(--text-primary);
+    color: #ffffff;
     font-weight: 500;
+    font-size: 14px;
   }
 }

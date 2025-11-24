@@ -1,13 +1,16 @@
 .checkbox {
   width: 100%;
-  margin-bottom: 6px;
-  padding-bottom: 5px;
-  margin-top: 2px;
+  margin-bottom: 12px;
+  padding-bottom: 0;
+  margin-top: 12px;
   color: var(--text-primary);
 
   input[type="checkbox"] {
     accent-color: var(--accent-cyan);
     cursor: pointer;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 
     &:focus {
       outline: 2px solid var(--accent-cyan);
@@ -20,10 +23,13 @@
     user-select: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    min-height: 28px;
 
     &:hover {
-      color: var(--accent-cyan);
+      color: var(--text-secondary);
     }
   }
 

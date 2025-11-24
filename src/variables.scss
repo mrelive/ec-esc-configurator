@@ -1,22 +1,28 @@
 :root {
-  /* Cyberpunk Corporate Color System */
+  /* Modern Dark Theme - Black Box Viewer Style */
   
   /* Primary Colors - Deep Dark Base */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #141829;
-  --bg-tertiary: #1a202c;
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #252525;
+  --bg-card: #1e1e1e;
   
-  /* Accent Colors - Neon Glow */
+  /* Accent Colors - Subtle Modern */
   --accent-cyan: #00d9ff;
-  --accent-purple: #b700ff;
-  --accent-blue: #0099ff;
-  --accent-pink: #ff006e;
-  --accent-green: #39ff14;
+  --accent-purple: #a855f7;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+  --accent-green: #10b981;
   
-  /* Text Colors */
-  --text-primary: #f0f0ff;
-  --text-secondary: #c8d0ff;
-  --text-tertiary: #9aa5d0;
+  /* Text Colors - High Contrast */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-primary: #333333;
+  --border-secondary: #404040;
+  --border-accent: #00d9ff;
   
   /* Legacy Support */
   --color-primary: #0099ff;

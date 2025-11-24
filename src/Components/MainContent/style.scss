@@ -52,36 +52,34 @@
     margin-bottom: 5px;
 
     .spacer-box {
-      padding: 10px;
-      margin-bottom: 3px;
-      padding-bottom: 10px;
-      width: calc(100% - 20px);
+      padding: 16px 20px;
+      margin-bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .spacer-box-title {
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 4px;
+      padding: 0;
       margin-bottom: 0;
       color: var(--accent-cyan);
       font-weight: 600;
+      font-size: 14px;
     }
 
     .gui-box {
-      margin-bottom: 10px;
-      font-weight: 600;
+      margin-bottom: 16px;
+      font-weight: 400;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: rgba(20, 24, 41, 0.6);
-      border: 2px solid var(--accent-blue);
-      border-radius: 4px;
-      width: calc(100% - 2px);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 15px rgba(0, 153, 255, 0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       transition: all 0.3s;
 
       &:hover {
-        border-color: var(--accent-cyan);
-        box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+        border-color: var(--border-secondary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       }
 
       &.grey {
@@ -91,17 +89,18 @@
       .gui-box-titlebar {
         margin-bottom: 0;
         background: linear-gradient(180deg, rgba(0, 217, 255, 0.15), rgba(0, 153, 255, 0.1));
-        border-radius: 3px 3px 0 0;
-        font-size: 13px;
+        border-radius: 4px 4px 0 0;
+        font-size: 14px;
         width: 100%;
-        height: 27px;
-        padding-bottom: 0;
+        min-height: 40px;
+        padding: 10px 15px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-weight: 600;
         border-bottom: 2px solid var(--accent-blue);
-        padding: 5px 10px;
         box-sizing: border-box;
         display: flex;
         align-items: center;
+        color: var(--accent-cyan);
       }
 
       span {
@@ -147,39 +146,45 @@
     .number,
     .number-text,
     .select {
-      margin-top: 7px;
-      margin-bottom: 7px;
+      margin-top: 12px;
+      margin-bottom: 12px;
 
       label {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        color: var(--text-primary);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+        gap: 12px;
       }
 
       .input-wrapper {
-        flex: 0 0 218px;
+        flex: 1;
+        min-width: 200px;
 
         input:not([type="checkbox"]),
         select {
           width: 100%;
-          height: 20px;
-          border: 2px solid var(--accent-blue);
-          border-radius: 3px;
-          background: rgba(20, 24, 41, 0.6);
-          color: var(--text-primary);
-          padding: 4px 8px;
+          height: 44px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.05);
+          color: #ffffff;
+          padding: 10px 14px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 14px;
           transition: all 0.2s;
 
           &:focus {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
             outline: none;
           }
 
           &:hover {
-            border-color: var(--accent-cyan);
+            border-color: var(--border-secondary);
+            background: var(--bg-card);
           }
         }
       }
