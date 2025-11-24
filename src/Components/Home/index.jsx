@@ -295,7 +295,9 @@ function CreditSection() {
           >
             Cleanflight Configurator
           </a>
-          {' '}and{' '}
+          {' '}
+          and
+          {' '}
           <a
             href="https://github.com/multiwii/baseflight-configurator"
             rel="noreferrer"
